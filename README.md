@@ -233,4 +233,3 @@ npm run build
 ## License
 
 MIT © [Muregis](https://github.com/Muregis) and contributors.
-Originally forked from [ronnyabuto/mpesa-stk](https://github.com/ronnyabuto/mpesa-stk).
