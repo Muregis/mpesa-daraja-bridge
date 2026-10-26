@@ -1,11 +1,12 @@
 {
-  "name": "mpesa-stk",
-  "version": "0.3.1",
-  "description": "Reliability-focused STK Push lifecycle manager: idempotency, deduplication, polling fallback, and reconciliation",
+  "name": "mpesa-daraja-bridge",
+  "version": "1.0.0",
+  "description": "Sub-second M-Pesa Daraja payment bridge & supermarket-style cashier terminal for retail, clinics, pharmacies, and hardware shops.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
+    "mpesa-bridge": "dist/bin/bridge.js",
     "mpesa-stk-relay": "dist/bin/serve.js"
   },
   "exports": {
@@ -80,21 +81,24 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "author": "Muregis",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ronnyabuto/mpesa-stk.git"
+    "url": "git+https://github.com/Muregis/mpesa-daraja-bridge.git"
   },
   "keywords": [
     "mpesa",
     "daraja",
     "stk-push",
+    "c2b",
+    "pos",
+    "cashier",
+    "retail",
+    "reconciliation",
     "safaricom",
     "payments",
     "kenya",
-    "typescript",
-    "webhook",
-    "webhook-relay",
-    "callback"
+    "typescript"
   ]
 }
