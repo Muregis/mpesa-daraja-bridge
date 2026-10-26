@@ -14,7 +14,7 @@
     "noImplicitOverride": true,
     "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "skipLibCheck": true
   },
   "include": ["src/**/*"],

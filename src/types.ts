@@ -48,6 +48,9 @@ export interface PaymentRecord {
   initiatedAt: Date
   completedAt?: Date
   rawCallback?: unknown           // store the full callback for audit
+  customerName?: string           // customer full name (useful in C2B & retail receipts)
+  paymentType?: 'STK_PUSH' | 'C2B' // payment origin type
+  businessShortCode?: string      // Till or Paybill number
 }
 
 export interface InitiatePaymentParams {

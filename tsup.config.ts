@@ -9,13 +9,14 @@ export default defineConfig([
       index:              'src/index.ts',
       'adapters/memory':  'src/adapters/memory.ts',
       'adapters/postgres':'src/adapters/postgres.ts',
+      'adapters/sqlite':  'src/adapters/sqlite.ts',
       'server/index':     'src/server/index.ts',
     },
     format: ['cjs', 'esm'],
     dts: true,
     clean: true,
     sourcemap: true,
-    external: ['pg', 'hono', '@hono/node-server'],
+    external: ['pg', 'better-sqlite3', 'hono', '@hono/node-server'],
   },
 
   // ---------------------------------------------------------------------------

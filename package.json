@@ -64,10 +64,12 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.19.12",
+    "better-sqlite3": "^13.0.3",
     "hono": "^4.12.10",
     "pg": "^8.11.0"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
     "@types/node": "^20.0.0",
     "@types/pg": "^8.11.0",
     "tsup": "^8.5.1",

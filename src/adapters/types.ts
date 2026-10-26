@@ -62,4 +62,19 @@ export interface StorageAdapter {
     from: Date,
     to: Date
   ): Promise<PaymentRecord[]>
+
+  /**
+   * Optional POS convenience: Find by M-Pesa receipt number (e.g. QJD82KL9).
+   */
+  getPaymentByReceiptNumber?(receiptNumber: string): Promise<PaymentRecord | null>
+
+  /**
+   * Optional POS convenience: Retrieve recent payments with optional search query
+   * for the cashier live feed / message store.
+   */
+  getRecentPayments?(options?: {
+    limit?: number
+    offset?: number
+    search?: string
+  }): Promise<PaymentRecord[]>
 }

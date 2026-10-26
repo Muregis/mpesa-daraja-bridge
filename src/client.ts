@@ -14,6 +14,13 @@ import { normalisePhoneNumber, initiateStkPush } from './initiate.js'
 import { processCallback as _processCallback } from './callback.js'
 import { pollPaymentStatus as _pollPaymentStatus } from './poll.js'
 import { reconcile as _reconcile } from './reconcile.js'
+import {
+  processC2BConfirmation as _processC2BConfirmation,
+  processC2BValidation as _processC2BValidation,
+  type C2BCallbackPayload,
+  type C2BProcessResult,
+  type C2BValidationResponse,
+} from './c2b.js'
 
 export class MpesaStk {
   private readonly config: Required<
@@ -154,6 +161,34 @@ export class MpesaStk {
     }
 
     return result
+  }
+
+  /**
+   * Process Safaricom C2B Confirmation webhook (Buy Goods Till or Paybill).
+   *
+   * Persists incoming payment, deduplicates against already-received transactions,
+   * and fires onPaymentSettled asynchronously so connected cashiers see the
+   * payment immediately.
+   */
+  async processC2BConfirmation(body: unknown): Promise<C2BProcessResult> {
+    const result = await _processC2BConfirmation(body, this.storage, this.logger)
+
+    if (!result.isDuplicate) {
+      void this.notifySettled(result.record)
+    }
+
+    return result
+  }
+
+  /**
+   * Validate Safaricom C2B Validation webhook before completing a customer payment.
+   * Return 0 to accept or a C2B rejection code to decline.
+   */
+  processC2BValidation(
+    body: unknown,
+    validator?: (payload: C2BCallbackPayload) => boolean | { valid: boolean; reason?: string }
+  ): C2BValidationResponse {
+    return _processC2BValidation(body, validator)
   }
 
   async pollPaymentStatus(checkoutRequestId: string): Promise<PaymentStatus> {
