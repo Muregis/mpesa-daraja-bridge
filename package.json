@@ -60,6 +60,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "bridge": "node dist/bin/bridge.js",
     "prepublishOnly": "npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

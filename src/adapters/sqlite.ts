@@ -299,7 +299,7 @@ export class SqliteAdapter implements StorageAdapter {
   async getRecentPayments(options?: {
     limit?: number
     offset?: number
-    search?: string
+    search?: string | undefined
   }): Promise<PaymentRecord[]> {
     const limit = Math.min(options?.limit ?? 50, 200)
     const offset = options?.offset ?? 0

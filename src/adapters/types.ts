@@ -75,6 +75,6 @@ export interface StorageAdapter {
   getRecentPayments?(options?: {
     limit?: number
     offset?: number
-    search?: string
+    search?: string | undefined
   }): Promise<PaymentRecord[]>
 }

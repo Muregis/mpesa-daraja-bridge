@@ -40,3 +40,9 @@ export type {
   C2BProcessResult,
   C2BValidationResponse,
 } from './c2b.js'
+
+// Cashier Bridge Application & Real-time Server
+export { createBridgeApp } from './bridge/server.js'
+export type { BridgeServerConfig } from './bridge/server.js'
+export { BridgeEventBus } from './bridge/events.js'
+export { TERMINAL_HTML } from './bridge/html.js'

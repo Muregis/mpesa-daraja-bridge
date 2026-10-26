@@ -11,6 +11,7 @@ export default defineConfig([
       'adapters/postgres':'src/adapters/postgres.ts',
       'adapters/sqlite':  'src/adapters/sqlite.ts',
       'server/index':     'src/server/index.ts',
+      'bridge/index':     'src/bridge/server.ts',
     },
     format: ['cjs', 'esm'],
     dts: true,
@@ -20,18 +21,18 @@ export default defineConfig([
   },
 
   // ---------------------------------------------------------------------------
-  // Binary: the standalone relay server (npx mpesa-stk-relay)
+  // Binaries: the standalone relay server and the cashier payment bridge
   // ---------------------------------------------------------------------------
   {
     entry: {
-      'bin/serve': 'bin/serve.ts',
+      'bin/serve':  'bin/serve.ts',
+      'bin/bridge': 'bin/bridge.ts',
     },
     format: ['cjs'],
     dts: false,
     sourcemap: false,
-    // Bundle everything into the binary so it runs with no extra installs
     noExternal: ['hono', '@hono/node-server'],
-    external: ['pg'],
+    external: ['pg', 'better-sqlite3'],
     banner: {
       js: '#!/usr/bin/env node',
     },
